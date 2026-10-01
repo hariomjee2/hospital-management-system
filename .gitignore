@@ -1,0 +1,21 @@
+# Build outputs
+target/
+build/
+.cxx/
+*.apk
+*.aab
+*.jar
+
+# Node & React Native dependencies
+node_modules/
+.expo/
+.yarn/
+
+# IDE & OS files
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+.artifacts/
+check_users.sql
+check_hashes.sql

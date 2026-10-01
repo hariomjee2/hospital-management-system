@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: hms-backend
+    env: docker
+    dockerContext: backend
+    dockerfilePath: backend/Dockerfile
+    region: singapore
+    plan: free
+    healthCheckPath: /api/v1/auth/login
+    envVars:
+      - key: SPRING_DATASOURCE_URL
+        fromDatabase:
+          name: hms-postgres
+          property: connectionString
+      - key: SPRING_DATASOURCE_USERNAME
+        fromDatabase:
+          name: hms-postgres
+          property: user
+      - key: SPRING_DATASOURCE_PASSWORD
+        fromDatabase:
+          name: hms-postgres
+          property: password
+      - key: APP_JWT_SECRET
+        value: c3VwZXItc2VjcmV0LWp3dC1rZXktZm9yLWhvc3BpdGFsLW1hbmFnZW1lbnQtc3lzdGVtLXByb2R1Y3Rpb24tZGVwbG95bWVudA==
+
+databases:
+  - name: hms-postgres
+    databaseName: hms_db
+    user: hms_user
+    plan: free
+    region: singapore
