@@ -5,11 +5,11 @@ build/
 *.apk
 *.aab
 *.jar
+*.log
 
-# Node & React Native dependencies
-node_modules/
-.expo/
-.yarn/
+# Mobile directory (Separated into its own repository)
+mobile/
+backend/
 
 # IDE & OS files
 .idea/
