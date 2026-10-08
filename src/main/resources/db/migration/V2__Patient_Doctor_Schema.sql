@@ -32,15 +32,15 @@ CREATE TABLE appointments (
 
 -- Insert Demo Patient and Doctor users
 INSERT INTO users (id, email, password_hash, is_active) VALUES
-('11111111-1111-1111-1111-111111111111', 'patient@hms.com', '$2a$10$dXJ3SW6G7P50lGmMkkmwe.20cQQubK3.HCGaGnQtrG1j821PgT2g2', true),
-('22222222-2222-2222-2222-222222222222', 'doctor@hms.com', '$2a$10$dXJ3SW6G7P50lGmMkkmwe.20cQQubK3.HCGaGnQtrG1j821PgT2g2', true);
+('11111111-1111-1111-1111-111111111111'::uuid, 'patient@hms.com', '$2a$10$dXJ3SW6G7P50lGmMkkmwe.20cQQubK3.HCGaGnQtrG1j821PgT2g2', true),
+('22222222-2222-2222-2222-222222222222'::uuid, 'doctor@hms.com', '$2a$10$dXJ3SW6G7P50lGmMkkmwe.20cQQubK3.HCGaGnQtrG1j821PgT2g2', true);
 
 INSERT INTO user_roles (user_id, role_id)
-SELECT '11111111-1111-1111-1111-111111111111', id FROM roles WHERE name = 'ROLE_PATIENT' UNION ALL
-SELECT '22222222-2222-2222-2222-222222222222', id FROM roles WHERE name = 'ROLE_DOCTOR';
+SELECT '11111111-1111-1111-1111-111111111111'::uuid, id FROM roles WHERE name = 'ROLE_PATIENT' UNION ALL
+SELECT '22222222-2222-2222-2222-222222222222'::uuid, id FROM roles WHERE name = 'ROLE_DOCTOR';
 
 INSERT INTO patients (user_id, first_name, last_name, blood_group, emergency_contact) VALUES
-('11111111-1111-1111-1111-111111111111', 'John', 'Doe', 'O+', '555-0199');
+('11111111-1111-1111-1111-111111111111'::uuid, 'John', 'Doe', 'O+', '555-0199');
 
 INSERT INTO doctors (user_id, first_name, last_name, specialization, department, consultation_fee) VALUES
-('22222222-2222-2222-2222-222222222222', 'Jane', 'Smith', 'Cardiologist', 'Cardiology', 150.00);
+('22222222-2222-2222-2222-222222222222'::uuid, 'Jane', 'Smith', 'Cardiologist', 'Cardiology', 150.00);

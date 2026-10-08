@@ -32,7 +32,7 @@ INSERT INTO roles (name, description) VALUES
 -- Insert demo admin user (password: 'password')
 INSERT INTO users (id, email, password_hash, is_active)
 VALUES (
-    '00000000-0000-0000-0000-000000000000',
+    '00000000-0000-0000-0000-000000000000'::uuid,
     'admin@hms.com',
     '$2a$10$ChIgnEirsoh5q0No2J12JOEF.RUu.ogpdKmJgT39lZg8wH6U6iX/K',
     true
@@ -40,4 +40,4 @@ VALUES (
 
 -- Assign admin role to demo user
 INSERT INTO user_roles (user_id, role_id)
-SELECT '00000000-0000-0000-0000-000000000000', id FROM roles WHERE name = 'ROLE_ADMIN';
+SELECT '00000000-0000-0000-0000-000000000000'::uuid, id FROM roles WHERE name = 'ROLE_ADMIN';

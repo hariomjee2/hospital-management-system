@@ -5,7 +5,7 @@ SET password_hash = '$2a$10$ChIgnEirsoh5q0No2J12JOEF.RUu.ogpdKmJgT39lZg8wH6U6iX/
 -- Insert demo doctor user if it doesn't exist
 INSERT INTO users (id, email, password_hash, is_active)
 VALUES (
-    '22222222-2222-2222-2222-222222222222',
+    '22222222-2222-2222-2222-222222222222'::uuid,
     'doctor@hms.com',
     '$2a$10$ChIgnEirsoh5q0No2J12JOEF.RUu.ogpdKmJgT39lZg8wH6U6iX/K',
     true
@@ -18,7 +18,7 @@ ON CONFLICT DO NOTHING;
 -- Insert demo patient user if it doesn't exist
 INSERT INTO users (id, email, password_hash, is_active)
 VALUES (
-    '11111111-1111-1111-1111-111111111111',
+    '11111111-1111-1111-1111-111111111111'::uuid,
     'patient@hms.com',
     '$2a$10$ChIgnEirsoh5q0No2J12JOEF.RUu.ogpdKmJgT39lZg8wH6U6iX/K',
     true
@@ -31,7 +31,7 @@ ON CONFLICT DO NOTHING;
 -- Insert demo nurse user if it doesn't exist
 INSERT INTO users (id, email, password_hash, is_active)
 VALUES (
-    '33333333-3333-3333-3333-333333333333',
+    '33333333-3333-3333-3333-333333333333'::uuid,
     'nurse@hms.com',
     '$2a$10$ChIgnEirsoh5q0No2J12JOEF.RUu.ogpdKmJgT39lZg8wH6U6iX/K',
     true
@@ -44,7 +44,7 @@ ON CONFLICT DO NOTHING;
 -- Insert demo receptionist user if it doesn't exist
 INSERT INTO users (id, email, password_hash, is_active)
 VALUES (
-    '44444444-4444-4444-4444-444444444444',
+    '44444444-4444-4444-4444-444444444444'::uuid,
     'receptionist@hms.com',
     '$2a$10$ChIgnEirsoh5q0No2J12JOEF.RUu.ogpdKmJgT39lZg8wH6U6iX/K',
     true
