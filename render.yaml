@@ -8,10 +8,18 @@ services:
     plan: free
     healthCheckPath: /api/v1/lab-tests/catalog
     envVars:
-      - key: SPRING_DATASOURCE_URL
+      - key: DB_HOST
         fromDatabase:
           name: hms-postgres
-          property: connectionString
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: hms-postgres
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: hms-postgres
+          property: database
       - key: SPRING_DATASOURCE_USERNAME
         fromDatabase:
           name: hms-postgres
