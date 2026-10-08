@@ -3,6 +3,8 @@ package com.hms.backend.modules.document.entities;
 import com.hms.backend.modules.auth.entities.User;
 import jakarta.persistence.*;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.JdbcType;
+import org.hibernate.type.descriptor.jdbc.VarbinaryJdbcType;
 
 import java.time.ZonedDateTime;
 import java.util.UUID;
@@ -26,6 +28,7 @@ public class ProfilePicture {
     private String contentType;
 
     @Lob
+    @JdbcType(VarbinaryJdbcType.class)
     @Column(nullable = false)
     private byte[] data;
 

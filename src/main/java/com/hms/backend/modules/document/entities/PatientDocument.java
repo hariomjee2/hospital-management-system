@@ -4,6 +4,8 @@ import com.hms.backend.modules.auth.entities.User;
 import com.hms.backend.modules.patient.entities.Patient;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.JdbcType;
+import org.hibernate.type.descriptor.jdbc.VarbinaryJdbcType;
 
 import java.time.ZonedDateTime;
 import java.util.UUID;
@@ -31,6 +33,7 @@ public class PatientDocument {
     private String contentType;
 
     @Lob
+    @JdbcType(VarbinaryJdbcType.class)
     @Column(nullable = false)
     private byte[] data;
 
