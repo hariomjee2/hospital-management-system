@@ -9,6 +9,7 @@ COPY pom.xml .
 
 # Copy source code and build production package
 COPY src ./src
+RUN chmod +x ./mvnw
 RUN ./mvnw package -DskipTests -B
 
 # Stage 2: Minimal Runtime JRE 21 Alpine Image
