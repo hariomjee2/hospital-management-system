@@ -7,9 +7,9 @@ build/
 *.jar
 *.log
 
-# Mobile directory (Separated into its own repository)
-mobile/
-backend/
+# Subfolders (Leading slash ensures only root subfolders are ignored)
+/mobile/
+/backend/
 
 # IDE & OS files
 .idea/
