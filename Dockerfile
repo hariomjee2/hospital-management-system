@@ -20,8 +20,8 @@ WORKDIR /app
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 USER appuser
 
-# Copy built JAR from builder
-COPY --from=builder /app/target/*.jar app.jar
+# Copy exact Spring Boot repackaged executable JAR from builder (excluding .original)
+COPY --from=builder /app/target/backend-0.0.1-SNAPSHOT.jar app.jar
 
 # Render sets $PORT dynamically at runtime; default to 8080
 ENV PORT=8080
