@@ -3,9 +3,9 @@ spring:
     name: backend
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/hms_db
-    username: hms_user
-    password: hms_password
+    url: ${SPRING_DATASOURCE_URL:${DATABASE_URL:jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:hms_db}}}
+    username: ${SPRING_DATASOURCE_USERNAME:${DB_USER:hms_user}}
+    password: ${SPRING_DATASOURCE_PASSWORD:${DB_PASSWORD:hms_password}}
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -23,10 +23,10 @@ spring:
     locations: classpath:db/migration
 
 server:
-  port: 8080
+  port: ${PORT:8080}
 
 app:
   jwt:
-    secret: "5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437" # 256-bit hex key
+    secret: ${APP_JWT_SECRET:5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437}
     expiration-ms: 900000 # 15 minutes
     refresh-expiration-ms: 604800000 # 7 days

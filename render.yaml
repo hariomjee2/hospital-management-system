@@ -6,7 +6,7 @@ services:
     dockerfilePath: Dockerfile
     region: singapore
     plan: free
-    healthCheckPath: /api/v1/auth/login
+    healthCheckPath: /api/v1/lab-tests/catalog
     envVars:
       - key: SPRING_DATASOURCE_URL
         fromDatabase:
@@ -21,7 +21,7 @@ services:
           name: hms-postgres
           property: password
       - key: APP_JWT_SECRET
-        value: c3VwZXItc2VjcmV0LWp3dC1rZXktZm9yLWhvc3BpdGFsLW1hbmFnZW1lbnQtc3lzdGVtLXByb2R1Y3Rpb24tZGVwbG95bWVudA==
+        value: 5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437
 
 databases:
   - name: hms-postgres
