@@ -6,7 +6,7 @@ services:
     dockerfilePath: Dockerfile
     region: singapore
     plan: free
-    healthCheckPath: /api/v1/lab-tests/catalog
+    healthCheckPath: /api/v1/users/profile-picture/00000000-0000-0000-0000-000000000000
     envVars:
       - key: DB_HOST
         fromDatabase:
