@@ -21,7 +21,8 @@ public class AuthController {
             AuthResponse response = authService.login(loginRequest);
             return ResponseEntity.ok(response);
         } catch (Exception e) {
-            return ResponseEntity.status(401).body("Error: Unauthorized");
+            System.err.println("Login authentication failed for " + loginRequest.getEmail() + ": " + e.getMessage());
+            return ResponseEntity.status(401).body("Error: " + e.getMessage());
         }
     }
 }
