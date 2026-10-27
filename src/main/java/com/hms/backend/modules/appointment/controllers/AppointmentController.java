@@ -23,9 +23,13 @@ public class AppointmentController {
     }
 
     @PostMapping
-    public ResponseEntity<AppointmentResponseDto> bookAppointment(@RequestBody BookAppointmentRequestDto request) {
-        UserDetailsImpl userDetails = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return ResponseEntity.ok(appointmentService.bookAppointment(userDetails.getId(), request));
+    public ResponseEntity<?> bookAppointment(@RequestBody BookAppointmentRequestDto request) {
+        try {
+            UserDetailsImpl userDetails = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            return ResponseEntity.ok(appointmentService.bookAppointment(userDetails.getId(), request));
+        } catch (Exception e) {
+            return ResponseEntity.status(400).body(Map.of("message", e.getMessage()));
+        }
     }
 
     @GetMapping("/my")
@@ -35,8 +39,25 @@ public class AppointmentController {
     }
 
     @PatchMapping("/{id}/status")
-    public ResponseEntity<AppointmentResponseDto> updateStatus(@PathVariable UUID id, @RequestBody Map<String, String> body) {
-        String status = body.get("status");
-        return ResponseEntity.ok(appointmentService.updateStatus(id, status));
+    public ResponseEntity<?> updateStatus(@PathVariable UUID id, @RequestBody Map<String, String> body) {
+        try {
+            String status = body.get("status");
+            return ResponseEntity.ok(appointmentService.updateStatus(id, status));
+        } catch (Exception e) {
+            return ResponseEntity.status(400).body(Map.of("message", e.getMessage()));
+        }
+    }
+
+    @PostMapping("/{id}/refer-ipd")
+    public ResponseEntity<?> referForIpd(@PathVariable UUID id, @RequestBody(required = false) Map<String, String> body) {
+        try {
+            String wardType = (body != null && body.containsKey("wardType")) ? body.get("wardType") : "GENERAL";
+            String notes = (body != null && body.containsKey("notes")) ? body.get("notes") : "Recommended for IPD observation.";
+            return ResponseEntity.ok(appointmentService.referForIpd(id, wardType, notes));
+        } catch (Exception e) {
+            System.err.println("Error in referForIpd: " + e.getMessage());
+            e.printStackTrace();
+            return ResponseEntity.status(400).body(Map.of("message", e.getMessage()));
+        }
     }
 }

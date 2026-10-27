@@ -84,6 +84,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/doctors/**").permitAll()
                         .requestMatchers("/api/v1/users/profile-picture/**").permitAll()
                         .requestMatchers("/h2-console/**").permitAll()
+                        .requestMatchers("/error").permitAll()
                         .requestMatchers("/api/test/**").permitAll()
                         .anyRequest().authenticated()
                 );

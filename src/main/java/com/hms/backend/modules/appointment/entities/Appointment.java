@@ -40,6 +40,12 @@ public class Appointment {
     @Column(name = "check_in_time")
     private ZonedDateTime checkInTime;
 
+    @Column(name = "recommended_ward_type")
+    private String recommendedWardType;
+
+    @Column(name = "ipd_referral_notes", columnDefinition = "TEXT")
+    private String ipdReferralNotes;
+
     @Column(columnDefinition = "TEXT")
     private String notes;
 
@@ -115,6 +121,22 @@ public class Appointment {
 
     public void setCheckInTime(ZonedDateTime checkInTime) {
         this.checkInTime = checkInTime;
+    }
+
+    public String getRecommendedWardType() {
+        return recommendedWardType;
+    }
+
+    public void setRecommendedWardType(String recommendedWardType) {
+        this.recommendedWardType = recommendedWardType;
+    }
+
+    public String getIpdReferralNotes() {
+        return ipdReferralNotes;
+    }
+
+    public void setIpdReferralNotes(String ipdReferralNotes) {
+        this.ipdReferralNotes = ipdReferralNotes;
     }
 
     public String getNotes() {

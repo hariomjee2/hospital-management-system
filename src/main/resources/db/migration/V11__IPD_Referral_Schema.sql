@@ -1,0 +1,2 @@
+ALTER TABLE appointments ADD COLUMN IF NOT EXISTS recommended_ward_type VARCHAR(50) DEFAULT NULL;
+ALTER TABLE appointments ADD COLUMN IF NOT EXISTS ipd_referral_notes TEXT DEFAULT NULL;

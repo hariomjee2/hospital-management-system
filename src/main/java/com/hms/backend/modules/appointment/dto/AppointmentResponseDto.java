@@ -15,6 +15,8 @@ public class AppointmentResponseDto {
     private Integer tokenNumber;
     private String queueStatus;
     private ZonedDateTime checkInTime;
+    private String recommendedWardType;
+    private String ipdReferralNotes;
     private String notes;
 
     public AppointmentResponseDto() {}
@@ -51,6 +53,12 @@ public class AppointmentResponseDto {
 
     public ZonedDateTime getCheckInTime() { return checkInTime; }
     public void setCheckInTime(ZonedDateTime checkInTime) { this.checkInTime = checkInTime; }
+
+    public String getRecommendedWardType() { return recommendedWardType; }
+    public void setRecommendedWardType(String recommendedWardType) { this.recommendedWardType = recommendedWardType; }
+
+    public String getIpdReferralNotes() { return ipdReferralNotes; }
+    public void setIpdReferralNotes(String ipdReferralNotes) { this.ipdReferralNotes = ipdReferralNotes; }
 
     public String getNotes() { return notes; }
     public void setNotes(String notes) { this.notes = notes; }
