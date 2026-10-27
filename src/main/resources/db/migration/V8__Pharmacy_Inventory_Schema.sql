@@ -35,21 +35,21 @@ CREATE TABLE IF NOT EXISTS pharmacy_dispensing_items (
 
 -- Seed Production Pharmacy Medicine Inventory
 INSERT INTO pharmacy_medicines (medicine_name, generic_name, category, batch_number, stock_quantity, reorder_level, unit_price, expiry_date, manufacturer)
-SELECT 'Paracetamol 500mg', 'Acetaminophen', 'Analgesics', 'BATCH-PARA-2026', 150, 20, 5.00, CURRENT_DATE + INTERVAL '365 days', 'Sun Pharma'
+SELECT 'Paracetamol 500mg', 'Acetaminophen', 'Analgesics', 'BATCH-PARA-2026', 150, 20, 5.00, '2027-12-31'::date, 'Sun Pharma'
 WHERE NOT EXISTS (SELECT 1 FROM pharmacy_medicines WHERE medicine_name = 'Paracetamol 500mg');
 
 INSERT INTO pharmacy_medicines (medicine_name, generic_name, category, batch_number, stock_quantity, reorder_level, unit_price, expiry_date, manufacturer)
-SELECT 'Amoxicillin 250mg', 'Amoxicillin Trihydrate', 'Antibiotics', 'BATCH-AMOX-2026', 80, 15, 12.50, CURRENT_DATE + INTERVAL '180 days', 'Cipla Ltd'
+SELECT 'Amoxicillin 250mg', 'Amoxicillin Trihydrate', 'Antibiotics', 'BATCH-AMOX-2026', 80, 15, 12.50, '2027-06-30'::date, 'Cipla Ltd'
 WHERE NOT EXISTS (SELECT 1 FROM pharmacy_medicines WHERE medicine_name = 'Amoxicillin 250mg');
 
 INSERT INTO pharmacy_medicines (medicine_name, generic_name, category, batch_number, stock_quantity, reorder_level, unit_price, expiry_date, manufacturer)
-SELECT 'Metformin 500mg', 'Metformin Hydrochloride', 'Diabetes', 'BATCH-MET-2026', 120, 25, 8.00, CURRENT_DATE + INTERVAL '240 days', 'Lupin Labs'
+SELECT 'Metformin 500mg', 'Metformin Hydrochloride', 'Diabetes', 'BATCH-MET-2026', 120, 25, 8.00, '2027-08-31'::date, 'Lupin Labs'
 WHERE NOT EXISTS (SELECT 1 FROM pharmacy_medicines WHERE medicine_name = 'Metformin 500mg');
 
 INSERT INTO pharmacy_medicines (medicine_name, generic_name, category, batch_number, stock_quantity, reorder_level, unit_price, expiry_date, manufacturer)
-SELECT 'Atorvastatin 10mg', 'Atorvastatin Calcium', 'Cardiac', 'BATCH-ATOR-2026', 5, 20, 18.00, CURRENT_DATE + INTERVAL '120 days', 'Torrent Pharma'
+SELECT 'Atorvastatin 10mg', 'Atorvastatin Calcium', 'Cardiac', 'BATCH-ATOR-2026', 5, 20, 18.00, '2027-05-31'::date, 'Torrent Pharma'
 WHERE NOT EXISTS (SELECT 1 FROM pharmacy_medicines WHERE medicine_name = 'Atorvastatin 10mg');
 
 INSERT INTO pharmacy_medicines (medicine_name, generic_name, category, batch_number, stock_quantity, reorder_level, unit_price, expiry_date, manufacturer)
-SELECT 'Omeprazole 20mg', 'Omeprazole', 'Gastrointestinal', 'BATCH-OMEP-2026', 200, 30, 6.50, CURRENT_DATE + INTERVAL '15 days', 'Dr. Reddys Labs'
+SELECT 'Omeprazole 20mg', 'Omeprazole', 'Gastrointestinal', 'BATCH-OMEP-2026', 200, 30, 6.50, '2026-11-15'::date, 'Dr. Reddys Labs'
 WHERE NOT EXISTS (SELECT 1 FROM pharmacy_medicines WHERE medicine_name = 'Omeprazole 20mg');
