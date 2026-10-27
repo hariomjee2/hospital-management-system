@@ -33,6 +33,12 @@ public class InvoiceService {
         return invoiceRepository.findAll().stream().map(this::mapToDto).collect(Collectors.toList());
     }
 
+    public InvoiceResponseDto getInvoiceById(UUID invoiceId) {
+        Invoice invoice = invoiceRepository.findById(invoiceId)
+                .orElseThrow(() -> new RuntimeException("Invoice not found: " + invoiceId));
+        return mapToDto(invoice);
+    }
+
     public InvoiceResponseDto payInvoice(UUID invoiceId, String paymentMethod) {
         Invoice invoice = invoiceRepository.findById(invoiceId)
                 .orElseThrow(() -> new RuntimeException("Invoice not found: " + invoiceId));
@@ -40,6 +46,19 @@ public class InvoiceService {
         invoice.setPaymentStatus("PAID");
         invoice.setPaymentMethod(paymentMethod != null ? paymentMethod.toUpperCase() : "CREDIT_CARD");
         invoice.setTransactionRef("TXN_" + System.currentTimeMillis() + "_" + UUID.randomUUID().toString().substring(0, 6).toUpperCase());
+        invoice.setPaidAt(ZonedDateTime.now());
+
+        Invoice saved = invoiceRepository.save(invoice);
+        return mapToDto(saved);
+    }
+
+    public InvoiceResponseDto verifyAndPayInvoice(UUID invoiceId, String paymentMethod, String transactionRef) {
+        Invoice invoice = invoiceRepository.findById(invoiceId)
+                .orElseThrow(() -> new RuntimeException("Invoice not found: " + invoiceId));
+
+        invoice.setPaymentStatus("PAID");
+        invoice.setPaymentMethod(paymentMethod != null ? paymentMethod.toUpperCase() : "UPI_QR");
+        invoice.setTransactionRef(transactionRef != null ? transactionRef : "UTR_" + System.currentTimeMillis());
         invoice.setPaidAt(ZonedDateTime.now());
 
         Invoice saved = invoiceRepository.save(invoice);
